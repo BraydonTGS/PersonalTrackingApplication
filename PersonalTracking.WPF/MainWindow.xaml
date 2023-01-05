@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalTracking.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Name="PersonalTrackingMainWindow"
+        Title="Personal Tracking"
+        Height="540" Width="1200" 
+        FontSize="24"
+        WindowStartupLocation="CenterScreen"
+        FontWeight="Bold"
+        Loaded="Window_Loaded" ResizeMode="NoResize" Background="#FF8EAFF7" Icon="/Logo.png">
     <Grid>
 
     </Grid>
