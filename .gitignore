@@ -475,3 +475,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/PersonalTracking.WPF/appsettings.json
+/PersonalTracking.WPF/DataBase/PersonalTrackingDbContext.cs
