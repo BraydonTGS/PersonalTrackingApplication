@@ -14,8 +14,6 @@ namespace PersonalTracking.WPF
             _department = new DepartmentViewModel();
             this.DataContext = _department;
         }
-
-        // Close the Window //
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
