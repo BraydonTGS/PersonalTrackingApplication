@@ -20,8 +20,8 @@ namespace PersonalTracking.WPF.Views
         {
             DepartmentPage departmentPage = new DepartmentPage();
             departmentPage.ShowDialog();
+            _department = new DepartmentViewModel();
             this.DataContext = _department;
-
         }
     }
 }

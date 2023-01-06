@@ -7,7 +7,7 @@ namespace PersonalTracking.WPF;
 public partial class MainWindow : Window
 {
     public MainWindow()
-    { 
+    {
         InitializeComponent();
     }
 
@@ -20,5 +20,6 @@ public partial class MainWindow : Window
     {
         lblWindowName.Content = "Department List";
         DataContext = new DepartmentViewModel(); 
+
     }
 }

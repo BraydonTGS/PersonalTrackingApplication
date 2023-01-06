@@ -18,6 +18,12 @@ namespace PersonalTracking.WPF.Models
             set { _departmentName = value; OnPropertyChanged(nameof(DepartmentName)); }
         }
 
+        public DepartmentDTO(int departmentId, string departmentName)
+        {
+            _departmentId = departmentId;
+            _departmentName = departmentName;
+        }
+
         public DepartmentDTO()
         {
 

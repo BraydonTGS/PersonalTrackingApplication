@@ -20,7 +20,7 @@ namespace PersonalTracking.WPF.Services
         // Get All Departments //
         public List<DepartmentDTO> GetAllDepartments()
         {
-            var departments = _context.Departments.OrderBy(d => d.DepartmentName).ToList(); 
+            var departments = _context.Departments.OrderBy(d => d.Id).ToList(); 
             var departmentDtos = new List<DepartmentDTO>();
             try
             {
@@ -43,5 +43,22 @@ namespace PersonalTracking.WPF.Services
                 return null; 
             }
         }
+        public bool AddDepartment(DepartmentDTO department)
+        {
+            var success = false;
+            if (department != null)
+            {
+                var departmentToAdd = new Department()
+                {
+                    Id = department.DepartmentId,
+                    DepartmentName = department.DepartmentName,
+                };
+                _context.Departments.Add(departmentToAdd); 
+                _context.SaveChanges();
+                success = true;
+            }
+            return success;
+        }
+
     }
 }
