@@ -1,23 +1,22 @@
-﻿using PersonalTracking.WPF.DataBase;
-using PersonalTracking.WPF.ViewModels;
+﻿using PersonalTracking.WPF.ViewModels;
 using System.Windows;
 
 namespace PersonalTracking.WPF
 {
 
-    public partial class DepartmentPage : Window
+    public partial class AddDepartmentPage : Window
     {
         private readonly DepartmentViewModel _department; 
-        public DepartmentPage()
+        public AddDepartmentPage()
         {
             InitializeComponent();
             _department = new DepartmentViewModel();
-            this.DataContext = _department;
+            DataContext = _department;
         }
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-          
+            Close();
+
         }
     }
 }

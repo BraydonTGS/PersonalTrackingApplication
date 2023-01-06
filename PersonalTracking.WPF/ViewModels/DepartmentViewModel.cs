@@ -1,4 +1,5 @@
-﻿using PersonalTracking.WPF.Commands;
+﻿using Microsoft.EntityFrameworkCore.Update.Internal;
+using PersonalTracking.WPF.Commands;
 using PersonalTracking.WPF.Models;
 using PersonalTracking.WPF.Services;
 using System;
@@ -25,55 +26,95 @@ namespace PersonalTracking.WPF.ViewModels
 
         // Current Department //
         private DepartmentDTO _department;
-
         public DepartmentDTO Department
         {
             get { return _department; }
             set { _department = value; OnPropertyChanged(nameof(Department)); }
         }
 
+        // Save Command //
         private RelayCommand _saveCommand;
         public RelayCommand SaveCommand
         {
             get { return _saveCommand; }
         }
+
+        // Update Command //
+        private RelayCommand _updateCommand;
+
+        public RelayCommand UpdateCommand
+        {
+            get { return _updateCommand; }
+        }
+
+
+        // CTOR //
         public DepartmentViewModel()
         {
             _service = new DepartmentService();
             LoadDepartments();
-
             Department = new DepartmentDTO(); 
-            _saveCommand = new RelayCommand(Save); 
-
+            _saveCommand = new RelayCommand(SaveDepartment);
+            _updateCommand= new RelayCommand(UpdateDepartment);
         }
 
+        // Load all Departments From DB //
+        private async void LoadDepartments()
+        {
+            try
+            {
+                var departments = await _service.GetAllDepartments();
+                if (departments != null)
+                {
+                    Departments = new ObservableCollection<DepartmentDTO>(departments);
+                }
+                else
+                {
+                    Departments = new ObservableCollection<DepartmentDTO>();
+                }
+            }
+          catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
+            }
+        
+        }
+
+
         // Add a New Department to DB //
-        public void Save()
+        public void SaveDepartment()
         {
             try
             {
                 var IsSaved = _service.AddDepartment(Department);
                 if (IsSaved)
                 {
-                    MessageBox.Show("Department Saved");
-                    //LoadDepartments(); 
+                    MessageBox.Show("Department Successfully Saved", "Save Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Department Not Saved"); 
+                    MessageBox.Show("Unable to Save Department, try again.", "Save error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception e)
             {
 
-                MessageBox.Show(e.Message); 
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        // Load all Departments From DB //
-        private void LoadDepartments()
+        // Update Department //
+        public void UpdateDepartment()
         {
-            Departments = new ObservableCollection<DepartmentDTO>(_service.GetAllDepartments());
+            try
+            {
+               
+                Console.WriteLine("Test"); 
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

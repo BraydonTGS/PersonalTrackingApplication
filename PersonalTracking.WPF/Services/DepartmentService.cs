@@ -1,9 +1,8 @@
-﻿using PersonalTracking.WPF.DataBase;
+﻿using Microsoft.EntityFrameworkCore;
+using PersonalTracking.WPF.DataBase;
 using PersonalTracking.WPF.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PersonalTracking.WPF.Services
@@ -18,9 +17,9 @@ namespace PersonalTracking.WPF.Services
         }
 
         // Get All Departments //
-        public List<DepartmentDTO> GetAllDepartments()
+        public async Task<List<DepartmentDTO>> GetAllDepartments()
         {
-            var departments = _context.Departments.OrderBy(d => d.Id).ToList(); 
+            var departments = await _context.Departments.OrderBy(d => d.Id).ToListAsync(); 
             var departmentDtos = new List<DepartmentDTO>();
             try
             {
@@ -36,13 +35,14 @@ namespace PersonalTracking.WPF.Services
                         departmentDtos.Add(depDTO);
                     }
                 }
-                return departmentDtos;
+                return  departmentDtos;
             }
             catch
             {
                 return null; 
             }
         }
+        // Add a New Department //
         public bool AddDepartment(DepartmentDTO department)
         {
             var success = false;
