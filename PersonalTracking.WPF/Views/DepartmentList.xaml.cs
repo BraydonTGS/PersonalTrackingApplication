@@ -1,4 +1,5 @@
 ﻿using PersonalTracking.WPF.DataBase;
+using PersonalTracking.WPF.ViewModels;
 using System.Linq;
 using System.Windows.Controls;
 
@@ -7,21 +8,19 @@ namespace PersonalTracking.WPF.Views
 {
     public partial class DepartmentList : UserControl
     {
-        private readonly PersonalTrackingDbContext _context; 
+        private DepartmentViewModel _department; 
         public DepartmentList()
         {
             InitializeComponent();
-            PersonalTrackingDbContext context = new PersonalTrackingDbContext();
-            _context= context;
-            gridDepartment.ItemsSource = _context.Departments.ToList(); 
-        
+            _department= new DepartmentViewModel();
+            this.DataContext = _department;
         }
 
         private void btnAdd_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             DepartmentPage departmentPage = new DepartmentPage();
             departmentPage.ShowDialog();
-            gridDepartment.ItemsSource = _context.Departments.ToList(); 
+            this.DataContext = _department;
 
         }
     }
