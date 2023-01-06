@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalTracking.WPF"
+        xmlns:views="clr-namespace:PersonalTracking.WPF.Views"
+        xmlns:viewmodels="clr-namespace:PersonalTracking.WPF.ViewModels"
         mc:Ignorable="d"
         Name="PersonalTrackingMainWindow"
         Title="Personal Tracking"
@@ -16,7 +18,7 @@
         <!-- Main Grid -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -31,7 +33,7 @@
         </Grid.RowDefinitions>
         <!-- Logo -->
         <Image Source="/Images/Logo.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"/>
-        <ContentControl Content=""
+        <ContentControl Content="{Binding}"
                         Grid.Row="1" Grid.Column="1" 
                         Grid.RowSpan="8" Margin="0,0,0,0"/>
         <Label x:Name="lblWindowName" Content="Window Name" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Margin="5"/>
@@ -89,7 +91,7 @@
         </StackPanel>
         <!-- Departments Button -->
         <StackPanel Grid.Row="5" Margin="0 2 0 0">
-            <Button Grid.Row="1" Name="btnDepartment" Height="60" Width="250" HorizontalAlignment="Left">
+            <Button Grid.Row="1" Name="btnDepartment" Height="60" Width="250" HorizontalAlignment="Left" Click="btnDepartment_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -140,4 +142,13 @@
             </Button>
         </StackPanel>
     </Grid>
+<!-- Window Resources -->
+    <Window.Resources>
+        <!-- Department List-->
+        <DataTemplate x:Name="DepartmentTemplate" DataType="{x:Type viewmodels:DepartmentViewModel}">
+            <views:DepartmentList>
+                
+            </views:DepartmentList>
+        </DataTemplate>
+    </Window.Resources>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using PersonalTracking.WPF.DataBase;
+using PersonalTracking.WPF.ViewModels;
 using System.Windows;
 
 namespace PersonalTracking.WPF; 
@@ -17,5 +18,11 @@ public partial class MainWindow : Window
 
         }
       
+    }
+
+    private void btnDepartment_Click(object sender, RoutedEventArgs e)
+    {
+        lblWindowName.Content = "Department List";
+        DataContext = new DepartmentViewModel(); 
     }
 }
