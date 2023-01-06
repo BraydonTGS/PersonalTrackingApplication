@@ -8,6 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Department.png" />
+    <None Remove="Images\Employee.png" />
+    <None Remove="Images\Exit.png" />
+    <None Remove="Images\Logo.png" />
+    <None Remove="Images\Logout.png" />
+    <None Remove="Images\Permission.png" />
+    <None Remove="Images\Position.png" />
+    <None Remove="Images\Salary.png" />
+    <None Remove="Images\Task.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1">
@@ -18,6 +30,18 @@
 
   <ItemGroup>
     <Folder Include="DataBase\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Department.png" />
+    <Resource Include="Images\Employee.png" />
+    <Resource Include="Images\Exit.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\Logout.png" />
+    <Resource Include="Images\Permission.png" />
+    <Resource Include="Images\Position.png" />
+    <Resource Include="Images\Salary.png" />
+    <Resource Include="Images\Task.png" />
   </ItemGroup>
 
 </Project>
