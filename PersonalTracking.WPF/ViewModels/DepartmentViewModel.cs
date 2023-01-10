@@ -82,11 +82,11 @@ namespace PersonalTracking.WPF.ViewModels
 
 
         // Add a New Department to DB //
-        public void SaveDepartment()
+        public async void SaveDepartment()
         {
             try
             {
-                var IsSaved = _service.AddDepartment(Department);
+                var IsSaved = await _service.AddDepartment(Department);
                 if (IsSaved)
                 {
                     MessageBox.Show("Department Successfully Saved", "Save Success", MessageBoxButton.OK, MessageBoxImage.Information);

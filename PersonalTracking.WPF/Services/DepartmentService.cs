@@ -44,7 +44,7 @@ namespace PersonalTracking.WPF.Services
             }
         }
         // Add a New Department //
-        public bool AddDepartment(DepartmentDTO department)
+        public async Task<bool> AddDepartment(DepartmentDTO department)
         {
             var success = false;
             if (department != null)
@@ -54,8 +54,8 @@ namespace PersonalTracking.WPF.Services
                     Id = department.DepartmentId,
                     DepartmentName = department.DepartmentName,
                 };
-                _context.Departments.Add(departmentToAdd); 
-                _context.SaveChanges();
+                _context.Departments.AddAsync(departmentToAdd); 
+                _context.SaveChangesAsync();
                 success = true;
             }
             return success;
