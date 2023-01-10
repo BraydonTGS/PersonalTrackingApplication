@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PersonalTracking.WPF.DataBase;
 using PersonalTracking.WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -58,6 +59,29 @@ namespace PersonalTracking.WPF.Services
                 success = true;
             }
             return success;
+        }
+
+        // Update A New Department //
+        public async Task<DepartmentDTO> UpdateDepartment(DepartmentDTO department)
+        {
+            try
+            {
+                var departmentToUpdate = await _context.Departments.FirstOrDefaultAsync(d => d.Id == department.DepartmentId);
+                if (departmentToUpdate != null)
+                {
+                    departmentToUpdate.DepartmentName = department.DepartmentName;
+                    departmentToUpdate.Id = department.DepartmentId;
+                    _context.SaveChanges();
+                    department.DepartmentName = departmentToUpdate.DepartmentName;
+                    department.DepartmentId = departmentToUpdate.Id;
+                }
+                return department;
+            }
+            catch
+            {
+                return null;
+            }
+  
         }
 
     }

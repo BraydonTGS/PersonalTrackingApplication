@@ -104,12 +104,20 @@ namespace PersonalTracking.WPF.ViewModels
         }
 
         // Update Department //
-        public void UpdateDepartment()
+        public async void UpdateDepartment()
         {
             try
             {
+                var updatedDepartment = await _service.UpdateDepartment(Department); 
+                if (updatedDepartment != null)
+                {
+                    MessageBox.Show("Department Successfully Updated", "Update Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Update Department, try again.", "Update error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                
-                Console.WriteLine("Test"); 
             }
             catch(Exception e)
             {
